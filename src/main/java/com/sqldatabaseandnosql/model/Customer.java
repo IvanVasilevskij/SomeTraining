@@ -1,4 +1,4 @@
-package app;
+package com.sqldatabaseandnosql.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,7 +41,7 @@ public class Customer {
         private String password;
         private String city;
 
-        Builder() {
+        public Builder() {
         }
 
         public Builder withLogin(String login) {
@@ -67,7 +67,7 @@ public class Customer {
     public static class Mutator {
         private Customer customer;
 
-        Mutator(Customer customer) {
+        public Mutator(Customer customer) {
             this.customer = customer;
         }
 
@@ -127,8 +127,7 @@ public class Customer {
 
     @Override
     public String toString() {
-
-        return String.format("hello, app.Customer![id = %d, login = %s, First Name = %s, Last Name = %s, City = %s, age = %c]",
+        return String.format("hello, Customer![id = %d, login = %s, First Name = %s, Last Name = %s, City = %s, age = %c]",
         id, login, firstName, lastName, city, age);
     }
 }
