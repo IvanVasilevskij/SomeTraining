@@ -14,7 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static org.junit.Assert.assertEquals;
 
@@ -53,6 +55,14 @@ public class CustomerDAOTest {
     @After
     public void tearDown() throws Exception {
         repository.deleteAll();
+    }
+
+    @Test
+    public void testFindAll() {
+        List<Customer> list = new ArrayList<>();
+        repository.findAll().forEach(list::add);
+        LOG.info("expected count = 3" + " - received count = " + list.size());
+        assertEquals(3, list.size());
     }
 
     @Test
