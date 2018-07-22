@@ -28,6 +28,34 @@ public class Customer {
         this.city = builder.city;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
     public static Builder builder() {
         return new Builder();
     }
@@ -127,7 +155,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return String.format("hello, Customer![id = %d, login = %s, First Name = %s, Last Name = %s, City = %s, age = %c]",
+        return String.format("Customer:[id = %d, login = %s, First Name = %s, Last Name = %s, City = %s, age = %c]",
         id, login, firstName, lastName, city, age);
     }
 }
