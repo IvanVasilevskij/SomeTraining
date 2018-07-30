@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
@@ -12,12 +14,17 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @NotEmpty
+    @Size(min = 2, max = 25)
     private String login;
+    @NotEmpty
+    @Size(min = 6, max = 25)
     private String password;
-    private String firstName;
-    private String lastName;
+    private String firstName = "";
+    private String lastName = "";
+    @NotEmpty
     private String city;
-    private int age;
+    private int age = 0;
 
     public Customer() {
     }
@@ -124,7 +131,7 @@ public class Customer {
             return this;
         }
 
-        public Mutator withLogin(int age) {
+        public Mutator withAge(int age) {
             this.customer.age = age;
             return this;
         }

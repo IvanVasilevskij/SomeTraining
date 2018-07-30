@@ -10,7 +10,7 @@
    <body>
       <h1>Welcome</h1>
 
-      <a href="<@spring.url '/customersList'/>">Customer List of Postgres</a>
+      <a href="<@spring.url '/customersList'/>">Все суещствующие клиенты</a>
 
    </body>
 

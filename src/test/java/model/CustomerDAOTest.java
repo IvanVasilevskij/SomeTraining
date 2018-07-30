@@ -90,4 +90,23 @@ public class CustomerDAOTest {
         }
         assertEquals(3, list.size());
     }
+
+    @Test
+    public void testFindByLogin() {
+        Customer customer = repository.findByLogin("Elisabeth Megan");
+        assertEquals("666", customer.getPassword());
+        LOG.info(customer.toString()+"\n");
+    }
+
+    @Test
+    public void refreshTheCustomer() {
+        Customer customer = repository.findByLogin("Elisabeth Megan");
+        Customer mutateCustomer = Customer.mutator(customer)
+                .withPassword("222")
+                .mutate();
+        repository.save(mutateCustomer);
+        LOG.info(customer.getId()+" :Id customer");
+        LOG.info(mutateCustomer.getId()+" :Id changeCustomer");
+        assertEquals("222", repository.findByLogin("Elisabeth Megan").getPassword());
+    }
 }
